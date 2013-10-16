@@ -1,0 +1,32 @@
+<%= form_tag :action => 'create' %>
+<p>
+  Name:
+  <%= text_field :doi, :name %>
+</p>
+<p>
+  Description:
+  <%= text_field :doi, :description %>
+<p>
+  URL
+  <%= text_field :update, :url %>
+</p>
+<p>
+  <%= submit_tag 'Create' %>
+</p>
+
+
+
+
+
+
+
+
+
+
+<%if false %>
+<%- model_class = Doi -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>
+<% end %>

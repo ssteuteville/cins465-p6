@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Doi:</strong>
+  <%= @update.doi_id %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @update.url %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @update.description %>
+</p>
+
+<%= link_to 'Edit', edit_update_path(@update) %> |
+<%= link_to 'Back', updates_path %>

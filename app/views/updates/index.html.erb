@@ -1,0 +1,31 @@
+<h1>Listing updates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Doi</th>
+      <th>Url</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @updates.each do |update| %>
+      <tr>
+        <td><%= update.doi_id %></td>
+        <td><%= update.url %></td>
+        <td><%= update.description %></td>
+        <td><%= link_to 'Show', update %></td>
+        <td><%= link_to 'Edit', edit_update_path(update) %></td>
+        <td><%= link_to 'Destroy', update, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Update', new_update_path %>
