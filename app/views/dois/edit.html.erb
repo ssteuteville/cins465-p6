@@ -1,5 +1,18 @@
-<%- model_class = Doi -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+<%= form_tag :action => 'update' %>
+<div class="control-group">
+  <span class="label label-default">Description</span>
+  <div class="controls">
+  <%= text_field :doi, :description, :class => 'text_field' %>
 </div>
-<%= render :partial => 'form' %>
+</div>
+
+<div class="control-group">
+  <span class="label label-default">URL</span>
+  <div class="controls">
+  <%= text_field :update, :url, :class => 'text_field' %>
+</div>
+</div>
+
+<div class="form-actions">
+  <%= submit_tag 'update', :class => 'btn btn-primary' %>
+</div>

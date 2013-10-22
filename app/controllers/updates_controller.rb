@@ -4,7 +4,7 @@ class UpdatesController < ApplicationController
   # GET /updates
   # GET /updates.json
   def index
-    @updates = Update.all
+    @updates = Update.search(params[:search])
   end
 
   # GET /updates/1

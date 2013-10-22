@@ -11,14 +11,6 @@
       <%= f.text_field :description, :class => 'text_field' %>
     </div>
   </div>
-  <%= f.fields_for :updates do |u|%>
-  <div class="control-group">
-    <%= u.label :url, :class => 'control-label' %>
-    <div class="controls">
-      <%= u.text_field :url, :class => 'text_field' %>
-    </div>
-  </div>
-<% end %>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

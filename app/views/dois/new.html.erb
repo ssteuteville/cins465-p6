@@ -1,18 +1,29 @@
 <%= form_tag :action => 'create' %>
-<p>
-  Name:
-  <%= text_field :doi, :name %>
-</p>
-<p>
-  Description:
-  <%= text_field :doi, :description %>
-<p>
-  URL
-  <%= text_field :update, :url %>
-</p>
-<p>
-  <%= submit_tag 'Create' %>
-</p>
+
+<div class="control-group">
+  <span class="label label-default">Name</span>
+  <div class="controls">
+  	<%= text_field :doi, :name, :class => 'text_field' %>
+  </div>
+</div>
+
+<div class="control-group">
+  <span class="label label-default">Description</span>
+  <div class="controls">
+  <%= text_field :doi, :description, :class => 'text_field' %>
+</div>
+</div>
+
+<div class="control-group">
+  <span class="label label-default">URL</span>
+  <div class="controls">
+  <%= text_field :update, :url, :class => 'text_field' %>
+</div>
+</div>
+
+<div class="form-actions">
+  <%= submit_tag 'Create', :class => 'btn btn-primary' %>
+</div>
 
 
 

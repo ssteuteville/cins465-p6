@@ -24,8 +24,10 @@ class DoisController < ApplicationController
   # POST /dois
   # POST /dois.json
   def create
-    @doi = Doi.new(doi_params)
-    @update = @doi.updates.build(update_params)
+   @doi = Doi.new(doi_params)#create a new doi
+   @doi.user_id = current_user.id
+   @update = @doi.updates.build(update_params) #create a new update associated to @doi 
+   @update.description = @doi.description #set the new update's description
     if @doi.save
       redirect_to :action => 'index'
     else
@@ -37,20 +39,27 @@ class DoisController < ApplicationController
   # PATCH/PUT /dois/1
   # PATCH/PUT /dois/1.json
   def update
-    respond_to do |format|
-      if @doi.update(doi_params)
-        format.html { redirect_to @doi, notice: 'Doi was successfully updated.' }
-        format.json { head :no_content }
+    if current_user.id == @doi.user_id
+      @doi.update_attributes(doi_params)
+      @update = @doi.updates.build(update_params)
+      @update.description = @doi.description
+      if @doi.save
+       redirect_to :action => 'index'
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @doi.errors, status: :unprocessable_entity }
+       render :action => 'edit'
       end
+    else
+      flash[:notice] = "You must be the user who created this DOI to edit it!"
+      redirect_to :action => 'index'
     end
   end
 
   # DELETE /dois/1
   # DELETE /dois/1.json
   def destroy
+    @doi.updates.each do |update|
+      update.destroy
+    end
     @doi.destroy
     respond_to do |format|
       format.html { redirect_to dois_url }

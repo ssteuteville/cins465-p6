@@ -18,11 +18,13 @@
               <div class="navbar-collapse collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav">
                   <a class="navbar-brand" href="/">DOI Server</a>
+                  <li>
                   <% if user_signed_in? %>
                     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
                   <% else %>
-                    <li><a href="/users/sign_in">Login</a></li>
+                    <a href="/users/sign_in">Login</a>
                   <% end %>
+                  </li>
                   <li><a href="/users/sign_up">Sign Up</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
