@@ -4,7 +4,12 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @doi = Doi.find_by_id(params[:search])
+    if !@doi.nil?
+      @comments = @doi.comments
+    else
+      @comments = Comment.all
+    end
   end
 
   # GET /comments/1
@@ -14,7 +19,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+    @comment = Comment.new(:doi_id => params[:comment][:doi_id])
   end
 
   # GET /comments/1/edit
@@ -25,10 +30,11 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to doi_path(@comment.doi_id), notice: 'Comment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @comment }
       else
         format.html { render action: 'new' }

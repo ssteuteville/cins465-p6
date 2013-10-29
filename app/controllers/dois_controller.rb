@@ -4,7 +4,11 @@ class DoisController < ApplicationController
   # GET /dois
   # GET /dois.json
   def index
-    @dois = Doi.search(params[:search])
+    if !params[:search].nil?
+      @dois = Doi.where('name LIKE ?', '%#{params[:search]}%')
+    else
+      @dois = Doi.all
+    end
   end
 
   # GET /dois/1
@@ -60,6 +64,9 @@ class DoisController < ApplicationController
     @doi.updates.each do |update|
       update.destroy
     end
+    @doi.comments.each do |comment|
+      comment.destroy
+    end
     @doi.destroy
     respond_to do |format|
       format.html { redirect_to dois_url }
@@ -75,10 +82,10 @@ class DoisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doi_params
-      params.require(:doi).permit(:name, :description)
+      params.require(:doi).permit(:name, :description, :url)
     end
 
     def update_params
-      params.require(:update).permit(:url)
+      params.require(:doi).permit(:description, :url)
     end
 end

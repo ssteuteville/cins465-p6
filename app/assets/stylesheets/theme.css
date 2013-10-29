@@ -159,10 +159,17 @@ legend {
 
 button,
 input,
-select,
+select {
+  margin: 0;
+  font-family: inherit;
+  font-size: 100%;
+}
+
+
 textarea {
   margin: 0;
   font-family: inherit;
+  max-width: 500px;
   font-size: 100%;
 }
 

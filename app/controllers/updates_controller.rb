@@ -4,7 +4,12 @@ class UpdatesController < ApplicationController
   # GET /updates
   # GET /updates.json
   def index
-    @updates = Update.search(params[:search])
+    @doi = Doi.find_by_id(params[:search])
+    if !@doi.nil?
+      @updates = @doi.updates
+    else
+      @updates = Update.all
+    end
   end
 
   # GET /updates/1
