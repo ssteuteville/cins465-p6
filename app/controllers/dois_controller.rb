@@ -4,8 +4,14 @@ class DoisController < ApplicationController
   # GET /dois
   # GET /dois.json
   def index
-    if !params[:search].nil?
-      @dois = Doi.where('name LIKE ?', '%#{params[:search]}%')
+    unless params[:search] == "" or params[:search].nil? 
+      if params[:option] == "name"
+        @dois = Doi.where('name LIKE ?', "%"+params[:search]+"%")
+      elsif params[:option == "doi_id"]
+        @dois = Doi.where('id IS ?', params[:search])
+      else
+        @dois = Doi.where('id IS ?', params[:search])
+      end
     else
       @dois = Doi.all
     end

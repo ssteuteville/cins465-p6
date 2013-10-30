@@ -6,6 +6,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:url) %></th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @dois.each do |doi| %>
       <tr>
+        <td class="mw"><%= doi.id %></td>
         <td class="mw"><%= link_to doi.name, doi_path(doi) %></td>
         <td class="mw"><%= doi.description %></td>
         <td class="mw"><%= link_to doi.updates[-1].url, doi.updates[-1].url, :target => "_blank" %></td>
