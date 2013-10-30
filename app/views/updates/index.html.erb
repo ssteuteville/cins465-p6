@@ -8,6 +8,7 @@
       <th>Doi</th>
       <th>Url</th>
       <th>Description</th>
+      <th>Last Update</th>
     </tr>
   </thead>
 
@@ -17,6 +18,7 @@
         <td class="mw"><%= update.doi.name %></td>
         <td class="mw"><%= update.url %></td>
         <td class="mw"><%= update.description %></td>
+        <td class="mw"><%= update.updated_at %></td>
       </tr>
     <% end %>
   </tbody>

@@ -10,8 +10,6 @@
   <dd><%= @doi.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @doi.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name("last update") %>:</strong></dt>
-  <dd><%= @doi.updates[-1].updated_at %></dd>
 </dl>
 
 <div class="form-actions">
