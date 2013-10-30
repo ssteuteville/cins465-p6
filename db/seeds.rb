@@ -25,7 +25,7 @@ Update.create!([
 
 
 User.create!([
-  { :email => "ssteuteville@gmail.com", :encrypted_password => "$2a$10$FUqPj7QzCId9XZ1K7Q3Xp.N5u/Od3/Qc6dBGCfuzuz2Kz4mIBFV8u", :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 12, :current_sign_in_at => "2013-10-30 02:33:16", :last_sign_in_at => "2013-10-30 01:15:44", :current_sign_in_ip => "127.0.0.1", :last_sign_in_ip => "127.0.0.1", :created_at => "2013-10-29 22:28:20", :updated_at => "2013-10-30 02:33:16" }
+  { :email => "ssteuteville@gmail.com", :password => "#12Fuck", :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 12, :current_sign_in_at => "2013-10-30 02:33:16", :last_sign_in_at => "2013-10-30 01:15:44", :current_sign_in_ip => "127.0.0.1", :last_sign_in_ip => "127.0.0.1", :created_at => "2013-10-29 22:28:20", :updated_at => "2013-10-30 02:33:16" }
 ])
 
 
