@@ -24,7 +24,7 @@
         <td class="mw"><%= doi.id %></td>
         <td class="mw"><%= link_to doi.name, doi_path(doi) %></td>
         <td class="mw"><%= doi.description %></td>
-        <td class="mw"><%= link_to doi.updates[-1].url, doi.updates[-1].url, :target => "_blank" %></td>
+        <td class="mw"><%= link_to doi.updates[0].url, doi.updates[0].url, :target => "_blank" %></td>
         <td>
           <% if user_signed_in? %>
             <% if current_user.id == doi.user_id %>

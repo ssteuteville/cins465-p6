@@ -5,10 +5,10 @@ class Update < ActiveRecord::Base
 	before_save :fix_url
 
 	def fix_url
-		if self.url =~ /\A([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?\z/
+		if self.url =~ /\A[\w]+\.[\w]{2,6}\z/
+			self.url = "https://www." + self.url
+		elsif self.url =~ /\A([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?\z/
 			self.url = "https://" + self.url
-		elsif self.url =~ /\A[\w]+\.[\w]{2,6}\z/
-			self.url = "https://www" + self.url
 		end
 	end
 end

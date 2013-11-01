@@ -30,9 +30,10 @@
                   <% end %>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                  <% unless !user_signed_in? and params[:action] == "show" %>
                   <form class="navbar-form navbar-left">
                     <!-- determine the path for form begin -->
-                    <% if params[:controller] == "home" %> 
+                    <% if !user_signed_in? %> 
                       <% path = "/" %>
                     <% elsif params[:controller] == "doi" %>
                       <% path = dois_path %>
@@ -66,6 +67,7 @@
                     <% end %>
                     <!-- Search Form End -->
                     </form>
+                  <% end %>
                 </ul>
               </div><!-- /.nav-collapse -->
             </div><!-- /.container -->
