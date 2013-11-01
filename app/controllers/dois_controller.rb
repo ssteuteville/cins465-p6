@@ -6,7 +6,11 @@ class DoisController < ApplicationController
   def index
     unless params[:search] == "" or params[:search].nil? 
       if params[:option] == "name"
-        @dois = Doi.where('name LIKE ?', "%"+params[:search]+"%")
+        begin
+          @dois = Doi.regex_search params[:search]
+        rescue Exception
+          redirect_to dois_path, notice: "Invalid Regular Expression"
+        end
       elsif params[:option == "doi_id"]
         @dois = Doi.where('id IS ?', params[:search])
       else

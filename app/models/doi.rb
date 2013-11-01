@@ -8,5 +8,9 @@ class Doi < ActiveRecord::Base
 
 	validates_presence_of :name, :description
 	validates_format_of :name, with: /[a-zA-Z0-9]+/
-	
+
+	def self.regex_search r
+		dois = Doi.all.map! {|doi| doi if Regexp.new(r).match doi.name}.compact
+	end
+		
 end
